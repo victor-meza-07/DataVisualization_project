@@ -7,5 +7,7 @@ namespace DataVisualizator.Data.local_models
 {
     public class ComponentModel
     {
+        public string ModelDisplayName { get; set; }
+        public string RelativePageLink { get; set; }
     }
 }

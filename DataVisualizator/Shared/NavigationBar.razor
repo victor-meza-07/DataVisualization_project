@@ -1,13 +1,18 @@
-﻿<nav class="nav-main">
+﻿@using DataVisualizator.Data.Services
+@inject ComponentService ComponentService
+
+<nav class="nav-main">
     <ul class="ul-plain">
         <li class="navh-item-top">
             <a href="#" @onclick="ToggleAlgorythmsSub">Algorythms</a>
             @if (ExpandSubMenu == true)
             {
                 <!-- IN the future sorround this with a list of ready components and their addys-->
-                <ul class="ul-dropdown">
-                    <li>Sub Menu Item</li>
-                    <li>Sub Menu Item</li>
+                <ul class="ul-dropdown ul-plain">
+                    @foreach (var item in ComponentService.ComponentList) 
+                    {
+                        <li class="drop-down-content"><a href="@item.RelativePageLink">@item.ModelDisplayName</a></li>
+                    }
                 </ul>
             }
         </li>

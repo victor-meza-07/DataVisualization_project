@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using DataVisualizator.Data;
+using DataVisualizator.Data.Services;
 
 namespace DataVisualizator
 {
@@ -29,6 +30,7 @@ namespace DataVisualizator
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            services.AddSingleton<ComponentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
