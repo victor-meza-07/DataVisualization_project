@@ -1,0 +1,94 @@
+﻿@page "/ac_linearSearch"
+
+<div class="row justify-content-center">
+    <h1>Linear Search</h1>
+</div>
+<div class="row justify-content-center">
+    <div class="form">
+        <input type="text" id="arrayInput" class="form-control" @bind="ArrayInput"/>
+        <label for="arrayInput">Input array elemets seperated by a space</label>
+        <input type="text" id="selectedItem" class="form-control" @bind="SelectedItem" />
+        <label for="selectedItem">Eneter item to search for</label>
+        <button type="button" class="btn btn-success" @onclick="PerformAnimatedSearch">Search</button>
+    </div>
+</div>
+<div class="row justify-content-center">
+    @if (elemtsFull == true)
+    {
+        @foreach (var item in this.Elements)
+        {
+            if (item == SelectedItem)
+            {
+                hasBeenAssigned = true;
+                <div class="card linear-search-card-found" style="width: 10rem; animation-delay:@animationDelay\s">
+                    <div class="card-body">
+                        <p class="card-text linear-search-item">@item</p>
+                    </div>
+                </div>
+                IncrementAnimationsDelay();
+            }
+            else if (hasBeenAssigned != true)
+            {
+                <div class="card linear-search-card-searching" style="width: 10rem; animation-delay:@animationDelay\s">
+                    <div class="card-body">
+                        <p class="card-text linear-search-item">@item</p>
+                    </div>
+                </div>
+                IncrementAnimationsDelay();
+            }
+            else
+            {
+                <div class="card linear-search-card" style="width: 10rem;">
+                    <div class="card-body">
+                        <p class="card-text linear-search-item">@item</p>
+                    </div>
+                </div>
+            }
+        }
+        listDone = true;
+    }
+    @if (listDone == true)
+    {
+
+    }
+</div>
+
+@code {
+    public string ArrayInput { get; set; }
+    public string[] Elements { get; set; }
+    public string SelectedItem { get; set; }
+    public bool elemtsFull = false;
+    public bool hasBeenAssigned = false;
+    public bool listDone = false;
+    public int animationDelay = 1;
+
+    public void PerformAnimatedSearch()
+    {
+        listDone = false;
+        hasBeenAssigned = false;
+        animationDelay = 1;
+
+        if (ArrayInput != null)
+        {
+            Elements = ArrayInput.Split(' ');
+        }
+
+        if (Elements.Length != 0)
+        {
+            elemtsFull = true;
+        }
+        else
+        {
+            elemtsFull = false;
+        }
+
+
+
+
+    }
+    public void IncrementAnimationsDelay() 
+    {
+        animationDelay++;
+    }
+
+}
