@@ -1,0 +1,27 @@
+﻿<nav class="nav-main">
+    <ul class="ul-plain">
+        <li class="navh-item-top">
+            <a href="#" @onclick="ToggleAlgorythmsSub">Algorythms</a>
+            @if (ExpandSubMenu == true)
+            {
+                <!-- IN the future sorround this with a list of ready components and their addys-->
+                <ul class="ul-dropdown">
+                    <li>Sub Menu Item</li>
+                    <li>Sub Menu Item</li>
+                </ul>
+            }
+        </li>
+        <li class="navh-item-top"><a href="#">Data Structures</a></li>
+    </ul>
+</nav>
+
+
+@code {
+    //controls the submenu's
+    bool ExpandSubMenu = false;
+
+    void ToggleAlgorythmsSub() 
+    {
+        this.ExpandSubMenu = !this.ExpandSubMenu;
+    }
+}

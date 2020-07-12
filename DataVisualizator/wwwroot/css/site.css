@@ -1,0 +1,68 @@
+@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+
+
+
+/** Custom CSS */
+
+.ul-plain{
+    list-style-type: none;
+}
+
+.nav-main{
+    background-color:black;
+    width: 100%;
+}
+
+.ul-top-level {
+    list-style-type: none;
+}
+
+.navh-item-top {
+    float: left;
+    margin: 5px;
+    padding: 5px;
+}
+
+.navh-item-top a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+    display:block;
+    position: relative;
+}
+
+.navh-item-top a:hover{
+    text-decoration: none;
+    color: red; 
+}
+
+.navh-item-top a:visited{
+    text-decoration: none;
+}
+
+
+.main-content{
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-top: 4em;
+}
+
+
+.ul-dropdown{
+    position: absolute;
+}
+
+.drop-down-content-container{
+    position:relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+drop-down-content{
+    background-color: gray;
+    color: black;
+    border: 1px solid black;
+    margin-top: 1px;
+    padding: 2px;
+}
