@@ -19,13 +19,9 @@ namespace DataVisualizator.Data.Services
 
         private void RegisterComponents() 
         {
-            ComponentList.Add(new ComponentModel{ModelDisplayName="Linear Search",RelativePageLink="/ac_linearSearch"});
+            ComponentList.Add(new ComponentModel {ModelDisplayName="Sequential Search",RelativePageLink="/ac_SequentialSearch"});
+            ComponentList.Add(new ComponentModel { ModelDisplayName = "Binary Search", RelativePageLink = "/ac_BinarySearch" });
         }
 
-
-        public void AddToComponentList(ComponentModel component) 
-        {
-            ComponentList.Add(component);
-        } 
     }
 }

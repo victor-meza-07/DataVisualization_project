@@ -104,6 +104,14 @@ ul{
     /*animation-delay:$s*/
 }
 
+.binary-search-content-container{
+    width:70%;
+    height:30%;
+}
+
+.error-message {
+    color:red;
+}
 
 
 /* ANIMATIONS */

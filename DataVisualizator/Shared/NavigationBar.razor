@@ -11,7 +11,7 @@
                 <ul class="ul-dropdown ul-plain">
                     @foreach (var item in ComponentService.ComponentList) 
                     {
-                        <li class="drop-down-content"><a href="@item.RelativePageLink">@item.ModelDisplayName</a></li>
+                        <li class="drop-down-content"><a href="@item.RelativePageLink" @onclick="ToggleAlgorythmsSub">@item.ModelDisplayName</a></li>
                     }
                 </ul>
             }

@@ -1,0 +1,120 @@
+﻿@page "/ac_BinarySearch"
+<div class="row justify-content-center">
+    <h1>Binary Search Algorithm</h1>
+</div>
+<div class="row justify-content-center">
+    <form class="form-group">
+        <label for="ArrayInput">Enter Array sperated by space</label>
+        <input class="form-control" type="text" id="ArrayInput" @bind="Inputstring"/>
+        <label for="searchItem">Item to search for</label>
+        <input class="form-control" type="text" id="searchItem" @bind="ChosenElement"/>
+        <button type="button" class="btn btn-success" @onclick="BinarySortClick">Sort and Search!</button>
+    </form>
+</div>
+<div class="row justify-content-center">
+    <div class="binary-search-content-container">
+        @if (_safeToRender == true)
+        {
+            if (_errorMessage != "") 
+            {
+                <h1 class="error-message">@_errorMessage</h1>
+            }
+        }
+        else
+        {
+
+        }
+    </div>
+</div>
+
+@code {
+
+    public string Inputstring { get; set; }
+    public string[] Elements { get; set; }
+    public string ChosenElement { get; set; }
+    public bool ElementsAreInts = true;
+    public int[] ElementsInt { get; set; }
+    public string _errorMessage;
+    public List<int> listOfEleemts { get; set; }
+    public bool _safeToRender = false;
+
+
+
+    public void BinarySortClick()
+    {
+        Sort();
+        CheckSortingSuccess();
+
+    }
+
+    //TODO:ADD THE VISALIZARTOJosijdjsio of the Sortingth=asdalsjkd 
+
+
+
+
+
+
+    private void CheckSortingSuccess()
+    {
+        if (ElementsAreInts == true) { _safeToRender = true; }
+        else if (_errorMessage != "" ){ _safeToRender = true; }
+    }
+
+    private void Sort()
+    {
+        ElementsAreInts = true;
+        listOfEleemts = new List<int>();
+        CheckInts();
+
+        if (ElementsAreInts != false) 
+        {
+            TransferTheArrayToInt();
+            SortArray();
+            WTC();
+        }
+    }
+
+    private void CheckInts()
+    {
+        MakeElement();
+        foreach (var item in Elements)
+        {
+            try { Int32.Parse(item); }
+            catch (Exception) { _errorMessage = "Could not parse all items to int"; ElementsAreInts = false; break; }
+        }
+    }
+
+    private void MakeElement()
+    {
+        if (Inputstring != null)
+        {
+            Elements = Inputstring.Split(' ');
+        }
+    }
+
+    private void TransferTheArrayToInt()
+    {
+
+        foreach (var item in Elements)
+        {
+            listOfEleemts.Add(Int32.Parse(item));
+        }
+
+        ElementsInt = listOfEleemts.ToArray();
+
+    }
+
+    private void SortArray()
+    {
+        Array.Sort(ElementsInt);
+    }
+
+    private void WTC()
+    {
+        foreach (var item in ElementsInt)
+        {
+            Console.WriteLine(item);
+        }
+    }
+
+}
