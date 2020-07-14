@@ -1,14 +1,36 @@
 ﻿@page "/ds_BinarySearchTree"
 
-<div class="row justify-content-center>
+@using DataVisualizator.Data.Services
+@inject BinaryTreeService TreeService
+
+<div class="row justify-content-center">
     <h1>BST</h1>
 </div>
-<div class="row justify-content-center"> 
+<div class="row justify-content-center">
+    <div class="form">
+        <input type="text" class="form-control" />
+        <button class="btn btn-dark" @onclick="Add">Add To The Tree!</button>
+    </div>
+</div>
+<div class="row justify-content-center">
     <div class="binary-search-tree-item-container">
         <p class="binary-search-tree-item">10</p>
     </div>
 </div>
 
-@code {
+@code{
+    public string Value { get; set; }
+
+
+    public void Add()
+    {
+        int value = Int32.Parse(Value);
+        TreeService.Tree.Add(value);
+    }
+
+    public void PrintTreeToConsole() 
+    {
+
+    }
 
 }

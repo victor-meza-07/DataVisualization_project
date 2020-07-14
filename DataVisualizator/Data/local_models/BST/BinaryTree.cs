@@ -15,6 +15,39 @@ namespace DataVisualizator.Data.local_models.BST
 
 
 
+
+
+        public List<Node> GetNodesInGeneration(int Generation)
+        {
+            List<Node> NodesInGeneration = new List<Node>();
+
+
+
+
+            //count how many levels down we've gone untill we find our generation. 
+
+
+
+
+
+
+
+            return NodesInGeneration;
+        }
+        private Node FindGeneration(int generation, Node root, Node parent) 
+        {
+            if (generation == root.Value)
+            {
+                return root;
+            }
+            else if (generation < root.Value) 
+            {
+                
+            }
+            return null;
+        }
+
+
         public Node Search(int i) 
         {
 
@@ -26,14 +59,33 @@ namespace DataVisualizator.Data.local_models.BST
             else 
             {
                 //we couldn't find it :(
+                return Search(i, RootNode);
             }
-            return null;
         }
-        private Node Search(int i, Node root) 
+        private Node Search(int i, Node root)
         {
-            return null;
+
+            if (i == root.Value) { return root; }
+            else if (i > root.Value)
+            {
+                return Search(i, root.RightChild);
+            }
+            else if (i <= root.Value)
+            {
+                return Search(i, root.LeftChild);
+            }
+            else 
+            {
+                return null;
+            }
         }
 
+        public void Add(int i) 
+        {
+            Node node = new Node();
+            node.Value = i;
+            Add(node);
+        }
         public void Add(Node node) 
         {
             if (RootNode.Value == null)

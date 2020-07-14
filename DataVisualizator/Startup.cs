@@ -31,6 +31,7 @@ namespace DataVisualizator
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
             services.AddSingleton<ComponentService>();
+            services.AddSingleton<BinaryTreeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
