@@ -16,7 +16,17 @@
                 </ul>
             }
         </li>
-        <li class="navh-item-top"><a href="#">Data Structures</a></li>
+        <li class="navh-item-top"><a href="#" @onclick="ToggleDataSub">Data Structures</a>
+            @if (ExpandDsSub == true) 
+            {
+                <ul class="ul-dropdown ul-plain">
+                    @foreach (var item in ComponentService.DataStructureList) 
+                    {
+                        <li class="drop-down-content"><a href="@item.RelativePageLink" @onclick="ToggleDataSub">@item.ModelDisplayName</a></li>
+                    }
+                </ul>
+            }
+        </li>
     </ul>
 </nav>
 
@@ -24,9 +34,21 @@
 @code {
     //controls the submenu's
     bool ExpandSubMenu = false;
+    bool ExpandDsSub = false;
 
-    void ToggleAlgorythmsSub() 
+    void ToggleAlgorythmsSub()
     {
         this.ExpandSubMenu = !this.ExpandSubMenu;
+    }
+
+    void ToggleDataSub() 
+    {
+        this.ExpandDsSub = !this.ExpandDsSub;
+    }
+
+    object MouseOver()
+    {
+        Console.WriteLine("Mouse is over!");
+        return null;
     }
 }

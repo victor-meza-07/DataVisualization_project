@@ -12,18 +12,117 @@
     </form>
 </div>
 <div class="row justify-content-center">
-    <div class="binary-search-content-container">
+    <div class=" row justify-content-center binary-search-content-container">
         @if (_safeToRender == true)
         {
-            if (_errorMessage != "") 
+            if (_errorMessage != null)
             {
                 <h1 class="error-message">@_errorMessage</h1>
             }
-        }
-        else
-        {
+            else
+            {
+                int midpoint = (ElementsInt.Length - (ElementsInt.Length / 2));
+                int delay = 1;
+                for (int i = 0; i < (ElementsInt.Length); i++)
+                {
 
-        }
+                    @if (_chosenElementAssigned == false)
+                    {
+                        if (ElementsInt[i] == Int32.Parse(ChosenElement))
+                        {
+                            //this is the chosen element
+                            _chosenElementAssigned = true;
+
+                            if (i == 0)
+                            {
+                                <div class="binary-search-item-container-low-found" style="animation-delay:@delay\s">
+                                    <p class="binary-search-item">@ElementsInt[i]</p>
+                                </div>
+                            }//low
+                            else if (i == ElementsInt.Length - 1)
+                            {
+                                <div class="binary-search-item-container-high-found" style="animation-delay:@delay\s">
+                                    <p class="binary-search-item">@ElementsInt[i]</p>
+                                </div>
+                            }//high
+                            else
+                            {
+                                <div class="binary-search-item-container-found" style="animation-delay:@delay\s">
+                                    <p class="binary-search-item">@ElementsInt[i]</p>
+                                </div>
+                            }//other;
+                        }
+                        else
+                        {
+                            if (i == 0)
+                            {
+                                <div class="binary-search-item-container-low-not-found" style="animation-delay:@delay\s">
+                                    <p class="binary-search-item">@ElementsInt[i]</p>
+                                </div>
+                            }//low
+                            else if (i == ElementsInt.Length - 1)
+                            {
+                                <div class="binary-search-item-container-high-not-found" style="animation-delay:@delay\s">
+                                    <p class="binary-search-item">@ElementsInt[i]</p>
+                                </div>
+                            }//high
+                            else
+                            {
+                                <div class="binary-search-item-container-not-found" style="animation-delay:@delay\s">
+                                    <p class="binary-search-item">@ElementsInt[i]</p>
+                                </div>
+                            }//other;
+                        }
+                    }
+                    else
+                    {
+                        //this is not the chosen element.
+                        if (i == 0)
+                        {
+                            <div class="binary-search-item-container-low" style="animation-delay:@delay\s">
+                                <p class="binary-search-item">@ElementsInt[i]</p>
+                            </div>
+                        }//low
+                        else if (i == ElementsInt.Length - 1)
+                        {
+                            <div class="binary-search-item-container-high" style="animation-delay:@delay\s">
+                                <p class="binary-search-item">@ElementsInt[i]</p>
+                            </div>
+                        }//high
+                        else
+                        {
+                            <div class="binary-search-item-container" style="animation-delay:@delay\s">
+                                <p class="binary-search-item">@ElementsInt[i]</p>
+                            </div>
+                        }//other;
+                    }
+
+                    @if (i > (midpoint-1))
+                    {
+                        delay--;
+                    }
+                    else if (i == midpoint) 
+                    {
+                        delay -= 2;
+                    }
+                    else
+                    {
+                         delay++;
+                    }
+                    Console.WriteLine($"Array Position:{i} | Delay:{delay} | Element:{ElementsInt[i]}");
+
+
+                                //check if we passed the midpoint;
+
+
+                                //1. We need to count up until we hit the midpoint
+                                //2. We need to  count down once we hit midpoint;
+
+                                //Check if current element is the desired element
+                            }
+                        }
+
+                    }
     </div>
 </div>
 
@@ -37,27 +136,27 @@
     public string _errorMessage;
     public List<int> listOfEleemts { get; set; }
     public bool _safeToRender = false;
+    public bool _errorInConversion = false;
+    public bool _chosenElementAssigned = false;
 
 
 
     public void BinarySortClick()
     {
+        Inputstring = Inputstring.Trim();
+        _chosenElementAssigned = false;
         Sort();
         CheckSortingSuccess();
-
     }
 
-    //TODO:ADD THE VISALIZARTOJosijdjsio of the Sortingth=asdalsjkd 
-
-
-
-
+    //TODO:Bug with the animation timing. 
 
 
     private void CheckSortingSuccess()
     {
-        if (ElementsAreInts == true) { _safeToRender = true; }
-        else if (_errorMessage != "" ){ _safeToRender = true; }
+        if (_errorInConversion == false) { _safeToRender = true; }
+        else if (_errorMessage != null ){ _safeToRender = true; }
+        WTC();
     }
 
     private void Sort()
@@ -66,11 +165,10 @@
         listOfEleemts = new List<int>();
         CheckInts();
 
-        if (ElementsAreInts != false) 
+        if (ElementsAreInts != false)
         {
             TransferTheArrayToInt();
             SortArray();
-            WTC();
         }
     }
 
@@ -80,7 +178,7 @@
         foreach (var item in Elements)
         {
             try { Int32.Parse(item); }
-            catch (Exception) { _errorMessage = "Could not parse all items to int"; ElementsAreInts = false; break; }
+            catch (Exception) { _errorMessage = "Could not parse all items to int"; ElementsAreInts = false; _errorInConversion = true; break; }
         }
     }
 
@@ -114,7 +212,10 @@
         foreach (var item in ElementsInt)
         {
             Console.WriteLine(item);
+
         }
+        Console.WriteLine($"Error Message: {_errorMessage}, _safeToRender = {_safeToRender}");
+        Console.WriteLine($"Error in conversion: {_errorInConversion}");
     }
 
 }

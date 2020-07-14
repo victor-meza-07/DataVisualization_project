@@ -58,8 +58,8 @@ ul{
     margin-top: 9px;
     margin-left: -10px;
     z-index: 1;
-    border-radius: 5px;
-    background: #91139a;
+    border-radius: 0px;
+    background: rgba(96, 0, 114, 0.70);
     box-shadow: inset 9px 9px 22px #3a083e, inset -9px -9px 22px #e81ef6;
 }
 
@@ -104,6 +104,11 @@ ul{
     /*animation-delay:$s*/
 }
 
+/*Binary Search Variables*/
+:root {
+    --binary-ani-dur:2s;
+}
+
 .binary-search-content-container{
     width:70%;
     height:30%;
@@ -111,6 +116,123 @@ ul{
 
 .error-message {
     color:red;
+}
+
+.binary-search-item{
+    font-size: 2em;
+    font-weight: 600;
+}
+.binary-search-item-container {
+    float: left;
+    margin: 2px;
+    border: 2px solid black;
+    width: 4em;
+    height: 4em;
+    background: white;
+    text-align:center;
+}
+.binary-search-item-container-not-found {
+    float: left;
+    margin: 2px;
+    border: 2px solid black;
+    width: 4em;
+    height: 4em;
+    background: white;
+    text-align: center;
+    animation-name: search-not-found;
+    animation-duration: var(--binary-ani-dur);
+}
+.binary-search-item-container-found {
+    float: left;
+    margin: 2px;
+    border: 2px solid black;
+    width: 4em;
+    height: 4em;
+    background: white;
+    text-align: center;
+    animation-name: search-found;
+    animation-duration: var(--binary-ani-dur);
+    animation-fill-mode: forwards;
+}
+
+.binary-search-item-container-high {
+    float: left;
+    margin: 2px;
+    border: 2px solid black;
+    width: 4em;
+    height: 4em;
+    background: white;
+    text-align: center;
+    animation-name: search-not-found-high;
+    animation-duration: var(--binary-ani-dur);
+}
+.binary-search-item-container-high-found {
+    float: left;
+    margin: 2px;
+    border: 2px solid black;
+    width: 4em;
+    height: 4em;
+    background: white;
+    text-align: center;
+    animation-name: search-found-high;
+    animation-duration: var(--binary-ani-dur);
+    animation-fill-mode: forwards;
+}
+.binary-search-item-container-high-not-found {
+    float: left;
+    margin: 2px;
+    border: 2px solid black;
+    width: 4em;
+    height: 4em;
+    background: white;
+    text-align: center;
+    animation-name: search-not-found-high;
+    animation-duration: var(--binary-ani-dur);
+}
+
+.binary-search-item-container-low{
+
+}
+.binary-search-item-container-low-found {
+    float: left;
+    margin: 2px;
+    border: 2px solid black;
+    width: 4em;
+    height: 4em;
+    background: white;
+    text-align: center;
+    animation-name: search-found-low;
+    animation-duration: var(--binary-ani-dur);
+    animation-fill-mode: forwards;
+}
+.binary-search-item-container-low-not-found {
+    float: left;
+    margin: 2px;
+    border: 2px solid black;
+    width: 4em;
+    height: 4em;
+    background: white;
+    text-align: center;
+    animation-name: search-not-found-low;
+    animation-duration: var(--binary-ani-dur);
+}
+
+
+/* Binary Search Tree */
+.binary-search-tree-item-container{
+    width: 2em;
+    height: 2em;
+
+    border: 2px solid black;
+    background: white;
+    text-align: center;
+    border-radius: 50px;
+    padding-top: .2;
+}
+.binary-search-tree-item{
+    font-size: 1em;
+    font-weight: 600;
+
 }
 
 
@@ -127,7 +249,6 @@ ul{
         background-color: red;
     }
 }
-
 @keyframes linear-search-not-found{
     0% {
         background-color: white;
@@ -141,3 +262,115 @@ ul{
         background-color: white;
     }
 }
+
+        /*Binary Search*/
+@keyframes search-not-found{
+    0% {
+        background-color: white;
+    }
+
+    55% {
+        background-color: yellow;
+    }
+
+    100% {
+        background-color: white;
+    }
+}
+@keyframes search-found {
+    0% {
+        background-color: white;
+    }
+
+    55% {
+        background-color: yellow;
+    }
+
+    100% {
+        background-color: red;
+    }
+}
+
+@keyframes search-found-high {
+    0% {
+        background-color: white;
+    }
+
+    25% {
+        background-color: green;
+    }
+
+    40% {
+        background-color: white;
+    }
+
+    55% {
+        background-color: yellow;
+    }
+
+    100% {
+        background-color: red;
+    }
+}
+@keyframes search-found-low {
+    0% {
+        background-color: white;
+    }
+    25% {
+        background-color:green;
+    }
+    40% {
+        background-color: white;
+    }
+    55% {
+        background-color: yellow;
+    }
+
+    100% {
+        background-color: red;
+    }
+}
+
+@keyframes search-not-found-high {
+    0% {
+        background-color: white;
+    }
+
+    25% {
+        background-color: green;
+    }
+
+    40% {
+        background-color: white;
+    }
+
+    55% {
+        background-color: yellow;
+    }
+
+    100% {
+        background-color: white;
+    }
+}
+@keyframes search-not-found-low {
+    0% {
+        background-color: white;
+    }
+
+    25% {
+        background-color: green;
+    }
+
+    40% {
+        background-color: white;
+    }
+
+    55% {
+        background-color: yellow;
+    }
+
+    100% {
+        background-color: white;
+    }
+}
+

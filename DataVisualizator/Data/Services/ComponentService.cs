@@ -10,12 +10,19 @@ namespace DataVisualizator.Data.Services
     {
 
         public List<ComponentModel> ComponentList { get; set; }
+        public List<ComponentModel> DataStructureList { get; set; }
         public ComponentService()
         {
             ComponentList = new List<ComponentModel>();
+            DataStructureList = new List<ComponentModel>();
             RegisterComponents();
+            RegisterDataStructures();
         }
 
+        private void RegisterDataStructures()
+        {
+            DataStructureList.Add(new ComponentModel { ModelDisplayName = "Binary Search Tree", RelativePageLink = "/ds_BinarySearchTree"});
+        }
 
         private void RegisterComponents() 
         {
